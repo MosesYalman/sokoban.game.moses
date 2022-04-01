@@ -19,13 +19,13 @@ main {
     background-size: contain;
 }
 .entity-block{
+    background-color:red;  
 
 }    
 .entity-goal{
 }
 
 .tile-wall{
-    background-color:red;  
     background-image:url("../images/wall.png");
 }
 .tile-Space{
