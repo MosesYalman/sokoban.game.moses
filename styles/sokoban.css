@@ -9,28 +9,29 @@ main {
     margin-left:auto;
     margin-right:auto;
 }
-.block {
+.tile {
     width: 25px;
     height: 25px;
     float: left;
 }
-.entity-player{
-    background-image:url("../images/FishLightBlue.png");
-    background-size: contain;
+.tile-space{
+    background-color:sandybrown;  
 }
+.tile-wall{
+    background-image:url("../images/wall.png");
+}
+.tile-goal{
+    background-color:gold; 
+}
+
 .entity-block{
     background-color:red;  
-
+    
 }    
 .entity-goal{
 }
 
-.tile-wall{
-    background-image:url("../images/wall.png");
-}
-.tile-space{
-    background-color:sandybrown;  
-}
-.tile-goal{
-    background-color:gold; 
+.entity-player{
+    background-image:url("../images/FishLightBlue.png");
+    background-size: contain;
 }

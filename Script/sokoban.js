@@ -15,6 +15,7 @@ document.addEventListener('keydown',keyPressed);
 
 function keyPressed(event){
     console.log("key pressed");
+    event.preventDefault();
     var dirX=0;
     var dirY=0;
     switch (event.keyCode) {
@@ -67,13 +68,19 @@ function keyPressed(event){
             { 
                 return;
             }
-  
-           const toMoveFromId=document.getElementById("x"+currPosX+"y"+currPosY);
-           const toMoveToId=document.getElementById("x"+checkX+"y"+checkY);
-           console.log(toMoveFromId.classList);
+            
+            const toMoveFromId=document.getElementById("x"+currPosX+"y"+currPosY);
+            const toMoveToId=document.getElementById("x"+checkX+"y"+checkY);
+            console.log(toMoveFromId.classList);
+            
+            console.log(toMoveToId.classList);
 
-           console.log(toMoveToId.classList);
-           if (toMoveToId.classList.contains(Tiles.Space) || toMoveToId.classList.contains(Tiles.Goal)){
+            if(toMoveToId.classList.contains(Entities.Block) && !toMoveFromId.classList.contains(Entities.Block)){
+                console.log("to: "+toMoveToId.classList+" from: " + toMoveFromId.classList);
+               checkFreeTile(checkX,checkY,dirX,dirY)           
+              }
+                          
+            if (toMoveToId.classList.contains(Tiles.Space) || toMoveToId.classList.contains(Tiles.Goal)){
                 console.log("move something");
                 if(toMoveFromId.classList.contains(Entities.Character)){
                     entity=Entities.Character;
@@ -82,20 +89,13 @@ function keyPressed(event){
                 }
                 else
                 {
+                    console.log("move Block")
                     entity=Entities.Block;          
                 }
                 console.log("Now we move")       
                 moveObject(entity,toMoveFromId, toMoveToId);
             }
-              else 
-                    {
-                      if(toMoveToId.classList.contains(Entities.Block) && !toMoveFromId.classList.contains(Entities.Block)){
-                          console.log("to: "+toMoveToId.classList+" from: " + toMoveFromId.classList);
-                         checkFreeTile(checkX,checkY,dirX,dirY)           
-                        }
-                   }                 
-                   console.log("checkFreeTile without move");
-      
+         
                    return               
              }
         
@@ -109,8 +109,7 @@ function keyPressed(event){
                         var cssTileType="";
                         switch(tileMap01.mapGrid[tileY][tileX][0]){
                             case "B":{
-                            boxes.push({tileX,tileY});
-                            cssTileType=Entities.Block;
+                            cssTileType=Entities.Block+" "+Tiles.Space;
                             break;        
                             }
                             case "W":{
@@ -131,7 +130,7 @@ function keyPressed(event){
                                 cssTileType=Tiles.Space;
                                 break;
                         }
-                        makeTile("block "+cssTileType,tileX,tileY);
+                        makeTile("tile "+cssTileType,tileX,tileY);
                                       
                     }
 
