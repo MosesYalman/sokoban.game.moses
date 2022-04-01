@@ -52,13 +52,14 @@ function keyPressed(event){
     
     function moveObject(className,from,to){
     console.log("Class: "+ className+" From: "+ from+" To: "+ to)    
-    from.classList.toggle(className);    
+    from.classList.toggle(className);  
     to.classList.toggle(className);    
 
     }
 
     function checkFreeTile(currPosX,currPosY,dirX,dirY){
             console.log("checkFreeTile");
+            var entity;
             var checkX=currPosX+dirX;
             var checkY=currPosY+dirY;
             console.log("x: " +currPosX,currPosY);
@@ -75,14 +76,16 @@ function keyPressed(event){
            if (toMoveToId.classList.contains(Tiles.Space) || toMoveToId.classList.contains(Tiles.Goal)){
                 console.log("move something");
                 if(toMoveFromId.classList.contains(Entities.Character)){
-                moveTo(Entities.Character,toMoveFromId, toMoveToId);
-                avatarX=checkX;
-                avatarY=checkY;
+                    entity=Entities.Character;
+                    avatarX=checkX;
+                    avatarY=checkY;
                 }
                 else
                 {
-                    moveTo(Entities.Block,toMoveFromId, toMoveToId);          
+                    entity=Entities.Block;          
                 }
+                console.log("Now we move")       
+                moveObject(entity,toMoveFromId, toMoveToId);
             }
               else 
                     {
@@ -115,7 +118,7 @@ function keyPressed(event){
                             break;        
                             }
                             case "P":{
-                            cssTileType=Entities.Character;
+                            cssTileType=Tiles.Space+" "+Entities.Character;
                                 avatarX=tileX;
                                 avatarY=tileY;
                                 break;

@@ -28,7 +28,7 @@ main {
 .tile-wall{
     background-image:url("../images/wall.png");
 }
-.tile-Space{
+.tile-space{
     background-color:sandybrown;  
 }
 .tile-goal{
