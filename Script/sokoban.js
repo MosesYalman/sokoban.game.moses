@@ -1,5 +1,4 @@
 "use strict";
-//const doc=document.body;  
 const mapGrid=document.getElementsByClassName("mapGrid")[0];
 const scale=25;
 var avatarX;
@@ -75,12 +74,12 @@ function keyPressed(event){
             
             console.log(toMoveToId.classList);
 
-            if(toMoveToId.classList.contains(Entities.Block) && !toMoveFromId.classList.contains(Entities.Block)){
+            if(toMoveToId.classList.contains(Entities.Block) && toMoveFromId.classList.contains(Entities.Character)){
                 console.log("to: "+toMoveToId.classList+" from: " + toMoveFromId.classList);
-               checkFreeTile(checkX,checkY,dirX,dirY)           
+               checkFreeTile(checkX,checkY,dirX,dirY);
               }
                           
-            if (toMoveToId.classList.contains(Tiles.Space) || toMoveToId.classList.contains(Tiles.Goal)){
+            if (!toMoveToId.classList.contains(Entities.Block)&&(toMoveToId.classList.contains(Tiles.Space) || toMoveToId.classList.contains(Tiles.Goal))){
                 console.log("move something");
                 if(toMoveFromId.classList.contains(Entities.Character)){
                     entity=Entities.Character;
