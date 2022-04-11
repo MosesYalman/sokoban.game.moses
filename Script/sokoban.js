@@ -18,22 +18,22 @@ function keyPressed(event){
     var dirX=0;
     var dirY=0;
     switch (event.keyCode) {
-        case 39:{ //Right
+        case 39:{ 
             dirX=1;
             console.log("right");
             break;
         }
-        case 37:{ //Left
+        case 37:{ 
             dirX=-1;
             console.log("left");
             break;
         }   
-        case 38:{ //Up
+        case 38:{ 
             dirY=-1;
             console.log("up");
             break;
         }
-        case 40:{//Down
+        case 40:{ 
             dirY=1;
             console.log("down");
             break;
